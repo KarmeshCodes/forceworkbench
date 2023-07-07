@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "sentry/sentry",
-            "version": "1.11.0",
+            "version": "3.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
@@ -22,7 +22,7 @@
             },
             "require": {
                 "ext-curl": "*",
-                "php": "^5.3|^7.0"
+                "php": "^7.2|^8.0"
             },
             "conflict": {
                 "raven/raven": "*"
@@ -82,7 +82,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.4.0",
+        "php": "~8.2.7",
         "ext-redis": "*",
         "ext-soap": "*",
         "ext-sodium": "*"
