@@ -446,11 +446,11 @@ class LoginController {
     }
 
     public function isOAuthEnabled() {
-        return true;
+        return $this->oauthEnabled;
     }
 
     public function isOAuthRequired() {
-        return true;
+        return $this->oauthRequired;
     }
 
     public function getErrors() {
