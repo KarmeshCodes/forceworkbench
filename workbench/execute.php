@@ -9,9 +9,9 @@ require_once 'soapclient/SforceApexClient.php';
 require_once 'async/ApexExecuteFutureTask.php';
 
 //correction for dynamic magic quotes
-if (isset($_POST['scriptInput']) && get_magic_quotes_gpc()) {
+/*if (isset($_POST['scriptInput']) && get_magic_quotes_gpc()) {
     $_POST['scriptInput'] = stripslashes($_POST['scriptInput']);
-}
+}*/
 
 if (isset($_POST['execute'])) {
     $_SESSION['scriptInput'] = $_POST['scriptInput'];
