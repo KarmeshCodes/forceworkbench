@@ -30,7 +30,7 @@ $config["oauthConfigs"]["default"] = array(
                                             )
                                        );
 
-
+$config["oauthRequired"]["default"] = true;
 // CSRF SECURITY SETTINGS
 // Uncomment and change the value below to a random, secret value:
 //
