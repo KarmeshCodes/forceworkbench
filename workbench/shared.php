@@ -511,10 +511,10 @@ function localizeDateTimes($inputStr, $formatOverride = null) {
     return preg_replace_callback('|\d\d\d\d\-\d\d\-\d\dT\d\d\:\d\d:\d\d\.\d\d\dZ|', 
                                     function($matches){
                                         $utcDate = new DateTime($matches[0]);
-                                        if (\'' . $timezone . '\'!= \'\') {
-                                            $utcDate->setTimezone(new DateTimeZone(\'' . $timezone . '\'));
+                                        if ($timezone!= '') {
+                                            $utcDate->setTimezone(new DateTimeZone($timezone));
                                         }
-                                        return $utcDate->format(\'' . $format . '\');
+                                        return $utcDate->format($format);
                                     },
                                     $inputStr);
                 
