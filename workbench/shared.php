@@ -509,17 +509,18 @@ function localizeDateTimes($inputStr, $formatOverride = null) {
     date_default_timezone_set("UTC");
     
     return preg_replace_callback('|\d\d\d\d\-\d\d\-\d\dT\d\d\:\d\d:\d\d\.\d\d\dZ|', 
-                                 create_function(
-                                    '$matches',
-                                       
-                                    '$utcDate = new DateTime($matches[0]);' .
-                                    'if (\'' . $timezone . '\'!= \'\') { ' . 
-                                        '$utcDate->setTimezone(new DateTimeZone(\'' . $timezone . '\'));'.
-                                    '}' .
-                                    'return $utcDate->format(\'' . $format . '\');'
-                                 ),
-                                 $inputStr);
+                                    function($matches){
+                                        $utcDate = new DateTime($matches[0]);
+                                        if (\'' . $timezone . '\'!= \'\') {
+                                            $utcDate->setTimezone(new DateTimeZone(\'' . $timezone . '\'));
+                                        }
+                                        return $utcDate->format(\'' . $format . '\');
+                                    },
+                                    $inputStr);
+                
 }
+
+
 
 function printSelectOptions($valuesToLabelsArray,$defaultValue = null) {
     $valueAndLabelMatched = false;
