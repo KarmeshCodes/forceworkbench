@@ -168,13 +168,19 @@ function usingSslEndToEnd() {
     return usingSslFromUserToWorkbench() && usingSslFromWorkbenchToSfdc();
 }
 
-function toBytes ($size_str) {
-    switch (substr ($size_str, -1)) {
-        case 'G': case 'g': $size_str *= 1024;
-        case 'M': case 'm': $size_str *= 1024;
-        case 'K': case 'k': $size_str *= 1024;
+function toBytes($str) {
+    $matches = [];
+    if (!preg_match('/([0-9]+)([a-z]?)/', strtolower($str), $matches)) {
+        return 0;
     }
-    return (int)$size_str;
+    $num = (int)$matches[1];
+    $unit = $matches[2];
+    switch ($unit) {
+        case 'g': $num *= 1024;
+        case 'm': $num *= 1024;
+        case 'k': $num *= 1024;
+    }
+    return $num;
 }
 
 function endsWith($haystack, $needle, $ignoreCase){
